@@ -8,6 +8,7 @@
 #include "los_bsp_uart.h"
 #include "los_inspect_entry.h"
 #include "los_demo_entry.h"
+#include "los_bsp_adapter.h"
 
 #include <string.h>
 
@@ -60,7 +61,8 @@ int main(void)
 		for example flash, i2c , system clock ....
     */
 	//HAL_init();....
-	
+	HAL_Init();
+	SystemClock_Config();
 	/*Init LiteOS kernel */
     uwRet = LOS_KernelInit();
     if (uwRet != LOS_OK) {
@@ -78,9 +80,9 @@ int main(void)
    
     //LOS_Demo_Entry();	
 		
-    //LOS_Inspect_Entry();
+    LOS_Inspect_Entry();
     
-    LOS_BoadExampleEntry();	
+//    LOS_BoadExampleEntry();	
 		
     /* Kernel start to run */
     LOS_Start();
